@@ -1,31 +1,28 @@
-import IconFacebook from "../assets/icon-facebook.svg"
-import IconInstagram from "../assets/icon-instagram.svg"
-import IconPinterest from "../assets/icon-pinterest.svg"
+import IconFacebook from "../assets/icon-facebook.svg?react";
+import IconInstagram from "../assets/icon-instagram.svg?react";
+import IconPinterest from "../assets/icon-pinterest.svg?react";
 
 const CONTACT_DATA = [
-  { contact: "Facebook", icon: IconFacebook },
-  { contact: "Pinterest", icon: IconPinterest },
-  { contact: "Instagram", icon: IconInstagram },
+  { contact: "Facebook", Icon: IconFacebook },
+  { contact: "Pinterest", Icon: IconPinterest },
+  { contact: "Instagram", Icon: IconInstagram },
 ];
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__socials">
-        {CONTACT_DATA.map(item => (
-            <a
+        {CONTACT_DATA.map(({contact, Icon}) => (
+          <a
             href="#"
             className="footer__social-link"
-            aria-label={`Visit our ${item.contact} page`}
-            key={item.contact}
-            >
-            <img
-                src={item.icon}
-                alt=""
-                className={`footer__social-icon footer__social-icon--${item.contact.toLowerCase()}`}
-                aria-hidden="true"
+            aria-label={`Visit our ${contact} page`}
+            key={contact}
+          >
+            <Icon
+              className={`footer__social-icon footer__social-icon--${contact.toLowerCase()}`}
             />
-            </a>
+          </a>
         ))}
       </div>
       <p className="footer__attribution">
