@@ -3,10 +3,10 @@ import FlipCard from "./FlipCard";
 
 const Timer = () => {
   const [time, setTime] = useState({
-    days: 8,
-    hours: 23,
-    minutes: 55,
-    seconds: 41,
+    days: 14,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
 
   useEffect(() => {
