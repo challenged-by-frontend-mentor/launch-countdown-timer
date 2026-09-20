@@ -1,23 +1,25 @@
 # Frontend Mentor - Launch countdown timer solution
 
+![](.reference/preview.jpg)
+
 This is a solution to the [Launch countdown timer challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-  - [AI Collaboration](#ai-collaboration)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+- [Frontend Mentor - Launch countdown timer solution](#frontend-mentor---launch-countdown-timer-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+    - [AI Collaboration](#ai-collaboration)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -31,93 +33,71 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<details>
+  <summary>Mobile view</summary>
+  <img src='screenshots/mobile-view.png' alt='Launch Countdown Timer challenge - Mobile view' width='375px'>
+</details>
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+<details>
+  <summary>Desktop view</summary>
+  <img src='screenshots/desktop-view.png' alt='Launch Countdown Timer challenge - Desktop view'>
+</details>
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+<details>
+  <summary>Active state view</summary>
+  <img src='screenshots/active-state-view.png' alt='Launch Countdown Timer challenge - Active state view'>
+</details>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Launch Countdown Timer with React, Custom CSS & 3D Flip Animation](https://www.frontendmentor.io/solutions/launch-countdown-timer-with-react-custom-css-and-3d-flip-animation-Ssa3qCu92z)
+- Live Site URL: [Frontend Mentor | Launch countdown timer](https://challenged-by-frontend-mentor.github.io/launch-countdown-timer/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- CSS custom properties & BEM methodology
+- Flexbox & CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Vite](https://vitejs.dev/) - Frontend Tooling
+- [SVGR](https://react-svgr.com/) - SVG to React Component transformer
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project provided deep insights into 3D CSS animation techniques and React state handling:
 
-To see how you can add code snippets, see below:
+1. **3D Flip Card Animation Mechanics:** Building a clock flip animation is uniquely challenging compared to standard card-flip components. Since it splits into top and bottom halves with independent rotation axes (`transform-origin`) and distinct timing delays, getting the lighting, card overlapping, and 3D perspective (`perspective(250px)`) to look natural required precise coordination.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+2. **Re-triggering CSS Animations with React Keys:** I learned the power of using the `key` prop (e.g., `key={`top-${current}`}`) in React to force element re-mounting. Rather than managing complex state toggles for CSS classes, updating the `key` cleanly triggers keyframe animations from scratch on every tick without state bugs or timing glitches.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+3. **Incremental Development & Iterative Deployment:** Adopting an iterative approach made a huge difference. I built the complete layout and functional countdown timer first, deployed the base version, and then introduced the 3D flip animations step-by-step. Working without visual clutter early on drastically streamlined debugging.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+4. **Handling SVGs as React Components with Vite:** Utilizing `vite-plugin-svgr` to render SVGs directly as React components was a game-changer. It allowed seamless inline access to `<svg>` properties for styling hover states and dynamic properties easily.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I plan to build upon this component to create a customizable launch countdown widget where users can input custom target dates and times. Beyond simple timers, this mechanism serves as a strong foundation for build-up landing pages, such as upcoming feature announcements, event launches, or promotional flash sales where time-driven anticipation is key.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [MDN - CSS perspective](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/perspective?utm_source=gemini) - This documentation was essential for understanding how the perspective property defines the distance between the user and the 3D z-plane.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [CSS-Tricks - How CSS Perspective Works](https://css-tricks.com/how-css-perspective-works/?utm_source=gemini) - A great guide that helped me visualize camera distance and how 3D space transforms elements.
+
+- [MDN - rotateX()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/transform-function/rotate?utm_source=gemini) - Clear explanations of axis-based rotations and the 3D coordinate system.
 
 ### AI Collaboration
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
-
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
-
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
+Throughout this project, I collaborated with Gemini and Google Search AI Mode as thought partners. I leveraged them primarily for debugging complex 3D CSS animation timing, exploring 3D coordinate physics (like `perspective` and `rotateX`), and refactoring React animation triggers using the `key` prop pattern to keep the codebase clean and performant.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- GitHub: [Kairung Vangmanaw](https://github.com/VangmanawKairung)
+- Frontend Mentor - [@VangmanawKairung](https://www.frontendmentor.io/profile/VangmanawKairung)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I would like to express my sincere gratitude to myself for pushing through the complex 3D mechanics, and to my family for their constant support. Special thanks to the Frontend Mentor team for designing such an engaging and challenging prompt, as well as to the creators of the essential tools that made this project possible—including AI assistants, Visual Studio Code, Google Chrome, and various VS Code extensions that streamlined my development workflow. I'd also like to give a hat tip to macOS Preview; using its quick pixel measurement tool alongside my design overlays allowed me to capture exact UI dimensions swiftly without endless trial and error.
