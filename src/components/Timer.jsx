@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import FlipCard from "./FlipCard";
 
 const Timer = () => {
   const [time, setTime] = useState({
@@ -10,6 +11,7 @@ const Timer = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
+
       setTime((prevTime) => {
         const totalSeconds =
           prevTime.days * 86400 +
@@ -35,8 +37,6 @@ const Timer = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const formatTime = (val) => String(val).padStart(2, "0");
-
   const accessibleTimerLabel = `${time.days} days, ${time.hours} hours, ${time.minutes} minutes, and ${time.seconds} seconds remaining`;
 
   return (
@@ -48,17 +48,7 @@ const Timer = () => {
     >
       <div className="timer__container">
         {Object.entries(time).map(([key, value]) => (
-          <div className="timer__item" key={key}>
-            <div className="timer__card" aria-hidden="true">
-              <span className="timer__card-half timer__card-half--top">
-                {formatTime(value)}
-              </span>
-              <span className="timer__card-half timer__card-half--bottom">
-                {formatTime(value)}
-              </span>
-            </div>
-            <span className="timer__label">{key.toUpperCase()}</span>
-          </div>
+          <FlipCard key={key} label={key} value={value} />
         ))}
       </div>
     </section>
