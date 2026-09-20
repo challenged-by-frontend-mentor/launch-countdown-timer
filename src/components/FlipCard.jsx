@@ -4,16 +4,11 @@ const FlipCard = ({label, value}) => {
 
     const [current, setCurrent] = useState(value);
     const [previous, setPrevious] = useState(value);
-    const [isFlipping, setIsFlipping] = useState(false);
 
     useEffect(() => {
         if(value !== current) {
             setPrevious(current);
             setCurrent(value);
-            setIsFlipping(true);
-
-            const timer = setTimeout(() => setIsFlipping(false), 600);
-            return () => clearTimeout(timer);
         }
     }, [value, current]);
 
@@ -21,11 +16,11 @@ const FlipCard = ({label, value}) => {
 
     return (
         <div className="timer__item">
-            <div className={`timer__card ${isFlipping ? "flip": ""}`} aria-hidden="true">
+            <div className="timer__card" aria-hidden="true">
                 <span className="timer__card-half timer__card-half--top">{formatTime(current)}</span>
                 <span className="timer__card-half timer__card-half--bottom">{formatTime(previous)}</span>
-                <span className="flip-card__top">{formatTime(previous)}</span>
-                <span className="flip-card__bottom">{formatTime(current)}</span>
+                <span key={`top-${current}`} className="flip-card__top">{formatTime(previous)}</span>
+                <span key={`bottom-${current}`} className="flip-card__bottom">{formatTime(current)}</span>
             </div>
             <span className="timer__label">{label.toUpperCase()}</span>
         </div>

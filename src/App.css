@@ -6,6 +6,7 @@
   --clr-neutral-slate-700: hsl(236, 21%, 26%);
   --clr-neutral-slate-800: hsl(235, 16%, 14%);
   --clr-neutral-slate-900: hsl(234, 17%, 12%);
+  --clr-card-top-background: hsl(236, 21%, 23%);
 
   /* Typography */
   --ff-body: "Red Hat Text", sans-serif;
@@ -84,7 +85,7 @@ body {
   background-color: var(--clr-neutral-slate-700);
   border-radius: 0.3rem;
   box-shadow: 0 5px 0 0 var(--clr-neutral-slate-900);
-  perspective: 100px;
+  perspective: 400px;
   font-size: 2.2rem;
   color: var(--clr-primary-pink-100);
   overflow: hidden;
@@ -124,7 +125,7 @@ body {
   top: 0;
   align-items: flex-end;
   line-height: 0;
-  background-color: hsl(236, 21%, 23%);
+  background-color: var(--clr-card-top-background);
 }
 
 .timer__card-half--bottom {
@@ -172,6 +173,42 @@ body {
   color: var(--clr-primary-lavender-300);
 }
 
+.flip-card__top,
+.flip-card__bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  backface-visibility: hidden;
+  z-index: 5;
+}
+
+.flip-card__top {
+  top: 0;
+  align-items: flex-end;
+  line-height: 0;
+  background-color: var(--clr-card-top-background);
+  border-radius: 0.3rem 0.3rem 0 0;
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+  animation: flipTop 0.3s ease-in forwards;
+}
+
+.flip-card__bottom {
+  bottom: 0;
+  align-items: flex-start;
+  line-height: 0;
+  background-color: var(--clr-neutral-slate-700);
+  border-radius: 0 0 0.3rem 0.3rem;
+  transform-origin: top;
+  transform: rotateX(90deg);
+  animation: flipBottom 0.3s ease-in 0.3s forwards;
+}
+
 .footer {
   margin-top: auto;
   width: 100%;
@@ -210,9 +247,36 @@ body {
   color: var(--clr-primary-pink-100);
 }
 
+@keyframes flipTop {
+  0% {
+    transform: perspective(250px) rotateX(0deg);
+    filter: brightness(1);
+  }
+  100% {
+    transform: perspective(250px) rotateX(-90deg);
+    filter: brightness(0.5);
+  }
+}
+
+@keyframes flipBottom {
+  0% {
+    transform: perspective(250px) rotateX(90deg);
+    filter: brightness(0.6);
+  }
+  100% {
+    transform: perspective(250px) rotateX(0deg);
+    filter: brightness(1);
+  }
+}
+
 @media (min-width: 1024px) {
   :root {
     --card-dot-size: 12px;
+  }
+
+  body {
+    background-size: contain;
+    background-position: bottom, top;
   }
 
   .main-content {
